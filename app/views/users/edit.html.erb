@@ -1,0 +1,22 @@
+<%= form_with scope: :user, url: user_path, local: true, method: :put do |f| %>
+
+    <p>
+      <% if @user.errors.any? %>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>      
+        </ul>
+      <% end %>
+    </p>
+    
+    <p>
+      <%= f.label :email %><br/>
+      <%= f.text_field :email %>
+    </p>
+    
+    <p>
+      <%= f.submit %>
+    </p>
+    
+    <% end %>
