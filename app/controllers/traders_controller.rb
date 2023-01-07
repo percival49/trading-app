@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class TradersController < ApplicationController
     before_action :authenticate_user!
 
     def index
@@ -30,7 +30,6 @@ class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
       @user.user_type = 'trader'
-      debugger
       if @user.save!
 
         redirect_to root_path
