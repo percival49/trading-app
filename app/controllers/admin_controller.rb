@@ -13,4 +13,8 @@ class AdminController < ApplicationController
         render admin_new_path
       end
   end
+
+  def index
+    @users = User.where.not(user_type: 'admin')
+  end
 end
