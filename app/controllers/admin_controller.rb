@@ -13,4 +13,33 @@ class AdminController < ApplicationController
         render admin_new_path
       end
   end
+
+  def trader_list
+    @users = User.where.not(user_type: 'admin')
+    render 'users/index'
+  end
+
+  def trader_details
+    @user = User.find(params[:id])
+    render 'users/show'
+  end
+
+  def edit_trader
+    @user = User.find(params[:id])
+    render 'users/edit'
+  end
+
+  def update_trader
+    @user = User.find(params[:user][:id])
+    if @user.update(user_params)
+      redirect_to "/admin/trader_list"
+    else
+      render 'users/edit'
+    end
+  end
+
+  private
+  def user_params
+      params.require(:user).permit(:email, :id)
+  end
 end
