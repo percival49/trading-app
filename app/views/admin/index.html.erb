@@ -1,9 +1,4 @@
 <h1>Admin</h1>
-<h2>All Users</h2>
-<% @users.each do |user| %>
-    <%= user.id %>
-    <%= user.email %>
-    <br/>
-  <% end %>
 
 <%= button_to 'Create User', admin_new_path, data:{ turbo:false }, method: :get %>
+<%= button_to 'See All Traders', admin_trader_list_path, data:{ turbo:false }, method: :get %>
