@@ -1,6 +1,14 @@
 class AdminController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    if params[:approved] == "false"
+      @users = User.where(approved: false)
+    else
+      @users = User.all
+    end
+  end
+  
   def create_user
     flash.now[:notice] = "save"
     @user = User.new(params.permit(:email, :password))
