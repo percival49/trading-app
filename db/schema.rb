@@ -10,16 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_16_114710) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_30_070016) do
+
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "posts", force: :cascade do |t|
+  create_table "companies", force: :cascade do |t|
+    t.string "cik", null: false
     t.string "name"
-    t.string "title"
-    t.text "content"
+    t.string "ticker"
+    t.json "prices"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cik"], name: "index_companies_on_cik", unique: true
   end
 
   create_table "users", force: :cascade do |t|
