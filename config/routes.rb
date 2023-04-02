@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   resources :traders
   devise_for :users
   resources :posts
+
+  default_url_options :host => 'localhost'
 end
