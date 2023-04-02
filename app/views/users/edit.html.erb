@@ -1,4 +1,4 @@
-<%= form_with scope: :user, url: user_path, local: true, method: :put do |f| %>
+<%= form_for @user, url: admin_trader_list_path, local: true, method: :put do |f| %>
 
     <p>
       <% if @user.errors.any? %>
@@ -13,6 +13,7 @@
     <p>
       <%= f.label :email %><br/>
       <%= f.text_field :email %>
+      <%= f.hidden_field :id, value: @user.id %>
     </p>
     
     <p>
